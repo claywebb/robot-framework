@@ -44,6 +44,7 @@ class Robot(object):
         # arg0 is distance in feet
 
     def checkForCollisionLR(self, arg0, arg1):
+        # check for collision among two left/right or front/back IR LEDs
         i=GPIO.input(arg0)                         #Reading output of right IR sensor
         j=GPIO.input(arg1)                        #Reading output of left IR sensor
         if i==0:                                #Right IR sensor detects an object
@@ -58,11 +59,9 @@ class Robot(object):
             return 0
 
     def checkForCollision(self, arg0):
-        i=[]
-        for pin in arg0:
-            i.append(GPIO.input(pin))
-        for x in i:
-            if x==0:
+        # check for collision among a list of IR LEDs
+        for x in arg0:
+            if GPIO.input(x)==i:
                 print("Obstacle detected with LED on Pin %s" % arg0[i.index(x)])
                 return arg0[i.index(x)]
                 time.sleep(0.1)
