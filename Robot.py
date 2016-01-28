@@ -107,6 +107,3 @@ class Robot(object):
             print "Error: Can not clear LCD because there is no LCD configured"
             return 0
         self.__LCD.clear()
-
-
-http://76.190.192.76
